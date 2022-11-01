@@ -12,6 +12,15 @@ class Login extends Component {
         }
     }
 
+    // used as an example ....
+    componentDidUpdate = () => {
+        console.log("Updated!")
+      }
+
+    componentWillUnmount = () => {
+        console.log("The component is ready to unmount!")
+    }
+
     emailHandler = (event) => {
 
         this.setState({

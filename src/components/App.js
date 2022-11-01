@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React, { Component } from 'react';
 import Login from './Login';
 import Profile from './Profile';
@@ -20,6 +21,20 @@ class App extends Component {
       isLoggedIn: true
     })
   }
+
+  componentDidMount = async () => {
+
+    const res = await fetch('http://localhost:8000/profile', {
+      headers: {
+        'Authorization': `Bearer ${Cookies.get('user')}`
+      }
+    })
+    const parsedRes = await res.json()
+    this.setUser(parsedRes.user)
+
+  }
+
+ 
 
 
   render() {
