@@ -8,18 +8,19 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            name: '',
             userType: ''
         }
     }
 
     // used as an example ....
-    componentDidUpdate = () => {
-        console.log("Updated!")
-      }
+    // componentDidUpdate = () => {
+    //     console.log("Updated!")
+    //   }
 
-    componentWillUnmount = () => {
-        console.log("The component is ready to unmount!")
-    }
+    // componentWillUnmount = () => {
+    //     console.log("The component is ready to unmount!")
+    // }
 
     emailHandler = (event) => {
 
@@ -33,6 +34,14 @@ class Login extends Component {
 
         this.setState({
             password: event.target.value,
+        })
+
+    }
+
+    nameHandler = (event) => {
+
+        this.setState({
+            name: event.target.value,
         })
 
     }
@@ -84,13 +93,14 @@ class Login extends Component {
 
         console.log(this.props)
 
-        const { email, password } = this.state
+        const { email, password, name } = this.state
 
         return (
             <div>
 
                 <form onSubmit={this.submitHandler} >
                     <input type="email" value={email} onChange={this.emailHandler} />
+                    <input type="text" value={name} onChange={this.nameHandler} />
                     <input type="password" value={password} onChange={this.passwordHandler} />
                     <br/>
                     Customer: <input type="radio" name='userType' value="customer" onChange={this.userSelect} />
