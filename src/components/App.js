@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import React, { Component } from 'react';
+import Chat from './Chat';
 import Login from './Login';
 import Profile from './Profile';
 
@@ -44,6 +45,7 @@ class App extends Component {
         {this.state.isLoggedIn ? <Profile user={this.state.user} /> : <><Login type="signup" setUser={this.setUser} />
           <Login type="signin" setUser={this.setUser} /> </>}
 
+          <Chat/>
 
       </div>
     );
