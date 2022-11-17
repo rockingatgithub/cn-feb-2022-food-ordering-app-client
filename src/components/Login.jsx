@@ -1,4 +1,6 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { createSession } from '../actions';
 
 class Login extends Component {
 
@@ -13,29 +15,16 @@ class Login extends Component {
         }
     }
 
-    // used as an example ....
-    // componentDidUpdate = () => {
-    //     console.log("Updated!")
-    //   }
-
-    // componentWillUnmount = () => {
-    //     console.log("The component is ready to unmount!")
-    // }
-
     emailHandler = (event) => {
-
         this.setState({
             email: event.target.value,
         })
-
     }
 
     passwordHandler = (event) => {
-
         this.setState({
             password: event.target.value,
         })
-
     }
 
     nameHandler = (event) => {
@@ -49,34 +38,12 @@ class Login extends Component {
     submitHandler = async (event) => {
 
         const { email, password, userType } = this.state
-
         event.preventDefault()
-
         const user = {
             email,
             password
         }
-
-        let res = await fetch(`http://localhost:8000/${userType}/${this.props.type}`, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
-        })
-
-        let parsedRes = await res.json()
-        console.log(parsedRes)
-
-        if(parsedRes.message === "Success"){
-
-            this.props.setUser(parsedRes.data)
-            if(window) {
-                document.cookie = 'user=' + parsedRes.token
-            }
-
-        }
+        this.props.dispatch(createSession(user, userType, this.props.type))
 
     }
 
@@ -115,4 +82,10 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+      main: state
+    }
+  }
+
+export default  connect(mapStateToProps)(Login);

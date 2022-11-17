@@ -3,6 +3,8 @@ import Cookies from 'js-cookie'
 import AddFood from './AddFood';
 import ListFood from './ListFood';
 import RestaurantList from './RestaurantList';
+import { deleteSession } from '../actions';
+import { connect } from 'react-redux';
 
 
 const fetchRestaurant = async  () => {
@@ -35,19 +37,31 @@ class Profile extends Component {
         })
     }
 
+    logoutHandler = () => {
+        this.props.dispatch(deleteSession())
+    }
+
 
     render() {
         return (
             <div>
     
                 Email: - {this.props.user.email}
-                <AddFood client={this.props.user._id} />
+                {this.props.main.userType === 'restaurant' && <AddFood client={this.props.user._id} />}
                 <ListFood client={this.props.user._id} />
                 <RestaurantList list={this.state.restaurant} client={this.props.user._id} />
+
+                <button onClick={this.logoutHandler} > Logout  </button>
                 
             </div>
         );
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+        main: state
+    }
+}
+
+export default connect(mapStateToProps)(Profile);
