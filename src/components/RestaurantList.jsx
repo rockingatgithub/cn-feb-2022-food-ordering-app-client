@@ -6,21 +6,12 @@ const FoodList = (props) => {
     </ul>
 } 
 
-class RestaurantList extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state= {
-
-        }
-    }
+const RestaurantList  = (props) => {
     
-
-    render() {
         return (
             <div>
             <ul>
-                {this.props.list.map((restaurant) => {
+                {props.list.map((restaurant) => {
                     return <li>
                         <span>{restaurant.email}</span>
                         <FoodList restaurant={restaurant}  />
@@ -29,7 +20,6 @@ class RestaurantList extends Component {
             </ul>
             </div>
         );
-    }
 }
 
 export default RestaurantList;

@@ -13,7 +13,18 @@ class Login extends Component {
             name: '',
             userType: ''
         }
+        this.intervalId = ''
     }
+
+    // componentDidMount = () => {
+    //     this.intervalId = setInterval(() => {
+    //         console.log("Running interval!")
+    //     }, 1000)
+    // }
+
+    // componentWillUnmount = () => {
+    //     clearInterval(this.intervalId)    
+    // }
 
     emailHandler = (event) => {
         this.setState({
