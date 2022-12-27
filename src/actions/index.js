@@ -6,8 +6,7 @@ export const setCounter = (num) => {
     }
 }
 
-
-export const setProfile = () => {
+const setProfile = () => {
 
     return async (dispatch, getState) => {
 
@@ -27,6 +26,9 @@ export const setProfile = () => {
     }
 
 }
+
+
+export default setProfile;
 
 export const createSession = (user, userType, type) => {
 

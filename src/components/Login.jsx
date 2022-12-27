@@ -2,6 +2,17 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { createSession } from '../actions';
 
+
+
+// export const Component = withRouter(({ history, location }) =>{
+
+// })
+
+// class Comp extends Component {
+//     render(){
+//         const { location, history } = this.props
+//     }
+// }
 class Login extends Component {
 
     constructor(props) {
@@ -98,5 +109,8 @@ const mapStateToProps = (state) => {
       main: state
     }
   }
+
+// const Router = withRouter(Comp)
+
 
 export default  connect(mapStateToProps)(Login);

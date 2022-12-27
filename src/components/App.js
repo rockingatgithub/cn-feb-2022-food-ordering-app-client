@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
-import { setCounter, setProfile } from '../actions';
+import setTheProfile, { setCounter } from '../actions';
 import Chat from './Chat';
 import HooksApp from './HooksApp';
 import Login from './Login';
@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.props.dispatch(setProfile())
+    this.props.dispatch(setTheProfile())
   }
 
   render() {
@@ -23,23 +23,22 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <h1>Food Ordering App</h1>
-          {this.props.main.isLoggedIn ? <Profile user={this.props.main.user} /> : <><Login type="signup"  />
-            <Login type="signin" /> </>}
-            {/* <HooksApp/>
+          {/* {this.props.main.isLoggedIn ? <Profile user={this.props.main.user} /> : <><Login type="signup"  />
+            <Login type="signin" /> </>} */}
+            {/* <HooksApp/> */}
             <Routes>
               <Route path='/signup' element={<Login type="signup"  />} />
               <Route path='/signin' element={<Login type="signin"  />} />
               <Route path='/profile' element={<Profile user={this.props.main.user} />} />
-              <Route path='/chat' element={<Chat/>}  />
-            </Routes> */}
+              {/* <Route path='/chat' element={<Chat/>}  /> */}
+            </Routes>
         </div>
-        {/* <div>
-          <Link to='/signup' />
-          <Link to='/signin' />
-          <Link to='/profile' />
-          <Link to='/chat' />
-
-        </div> */}
+        <div>
+          <Link to='/signup'> Signup </Link>
+          <Link to='/signin' > Singin </Link>
+          <Link to='/profile'> Profile </Link>
+          <Link to='/chat'> Chat </Link>
+        </div>
       </BrowserRouter>
     );
   }

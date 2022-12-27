@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import socketIO from 'socket.io-client';
-const scoket = socketIO.connect('http://localhost:8000')
+// const scoket = socketIO.connect('http://localhost:8000')
 
 
 class Chat extends Component {
@@ -14,9 +14,9 @@ class Chat extends Component {
     
 
     componentDidMount = () => {
-        scoket.on('msg-from-backend', (msg) => {
-            console.log('Message received!', msg)
-        })
+        // scoket.on('msg-from-backend', (msg) => {
+        //     console.log('Message received!', msg)
+        // })
     }
 
     msgHandler = (event) => {
@@ -26,7 +26,7 @@ class Chat extends Component {
     }
 
     sendMessage = () => {
-        scoket.emit('msg', this.state.msg)
+        // scoket.emit('msg', this.state.msg)
     }
 
     render() {
