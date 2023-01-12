@@ -17,6 +17,7 @@ class App extends Component {
     this.props.dispatch(setTheProfile())
   }
 
+
   render() {
 
     return (
@@ -39,6 +40,15 @@ class App extends Component {
           <Link to='/profile'> Profile </Link>
           <Link to='/chat'> Chat </Link>
         </div>
+
+            <h1>
+              Upload any file:- 
+              <form action="http://localhost:8000/upload" method="post" enctype="multipart/form-data">
+                  <input type="file" name="avatar" />
+                  <button type='submit' > Submit </button>
+              </form>
+            </h1>
+
       </BrowserRouter>
     );
   }
